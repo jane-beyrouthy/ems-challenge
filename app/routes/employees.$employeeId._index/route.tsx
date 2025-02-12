@@ -49,17 +49,6 @@ export default function EditEmployeePage() {
         <h1>Edit Employee</h1>
         <EmployeeForm method="put" employee={employee} />
       </div>
-      <ul>
-        <li>
-          <a href="/employees">Employees</a>
-        </li>
-        <li>
-          <a href="/employees/new">New Employee</a>
-        </li>
-        <li>
-          <a href="/timesheets/">Timesheets</a>
-        </li>
-      </ul>
     </div>
   );
 }

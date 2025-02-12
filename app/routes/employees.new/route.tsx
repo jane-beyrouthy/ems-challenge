@@ -29,15 +29,6 @@ export default function NewEmployeePage() {
     <div>
       <h1>Create New Employee</h1>
       <EmployeeForm method="post" />
-      <hr />
-      <ul>
-        <li>
-          <a href="/employees">Employees</a>
-        </li>
-        <li>
-          <a href="/timesheets">Timesheets</a>
-        </li>
-      </ul>
     </div>
   );
 }
