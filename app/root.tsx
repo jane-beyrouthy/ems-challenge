@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import Navigation from "~/components/Navigation";
 
 import type { Route } from "./+types/root";
 import "~/app.css";
@@ -33,7 +34,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        {/* Include Navigation at the top of every page */}
+        <Navigation />
+
+        {/* Render the main content */}
+        <main className="p-4">{children}</main>
+
         <ScrollRestoration />
         <Scripts />
       </body>
