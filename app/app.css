@@ -92,6 +92,7 @@ nav .active {
   transition: background 0.3s ease-in-out;
   width: 250px; /* Set a fixed width */
   text-align: center;
+  margin-top: 20px;
 }
 
 .button:hover {
@@ -228,6 +229,7 @@ select {
   border-radius: 5px;
   font-size: 16px;
   transition: background 0.3s ease-in-out;
+  margin-top: 20px;
 }
 
 .add-employee-button:hover {
@@ -293,6 +295,42 @@ select {
 
 .edit-button:hover {
   background-color: #1976d2;
+}
+
+/* Pagination Container */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+/* Pagination Buttons */
+.pagination-button {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.pagination-button:hover {
+  background-color: #1976d2;
+}
+
+.pagination-button:disabled {
+  background-color: #b0c4de;
+  cursor: not-allowed;
+}
+
+/* Page Info */
+.page-info {
+  font-size: 16px;
+  font-weight: bold;
 }
 
 /* Tables */
