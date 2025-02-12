@@ -8,7 +8,7 @@ import {
 } from "@schedule-x/calendar";
 import { createEventsServicePlugin } from "@schedule-x/events-service";
 
-import "@schedule-x/theme-default/dist/index.css"; // Import default theme
+//import "@schedule-x/theme-default/dist/index.css"; // Import default theme
 
 // Function to format datetime to "YYYY-MM-DD HH:mm"
 const formatDateTime = (dateString: string) => {
@@ -55,10 +55,9 @@ export default function TimesheetCalendarView({
   }, []);
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-semibold mb-4">Timesheet Calendar View</h2>
-      {/* Custom Wrapper to apply styles */}
-      <div className="sx-react-calendar-wrapper">
+    <div className="calendar-container">
+      <h2 className="calendar-title">Calendar View</h2>
+      <div className="calendar-wrapper">
         <ScheduleXCalendar calendarApp={calendar} />
       </div>
     </div>

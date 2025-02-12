@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import { useState } from "react";
 import { getDB } from "~/db/getDB";
 import TimesheetTableView from "~/components/TimesheetTableView";
@@ -16,30 +16,34 @@ export async function loader() {
 }
 
 export default function TimesheetsPage() {
+  const navigate = useNavigate();
   const { timesheets } = useLoaderData() as { timesheets: any[] };
   const [view, setView] = useState<"table" | "calendar">("table");
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-semibold mb-4">Timesheets</h2>
-
+    <div className="timesheets-page">
       {/* Toggle Buttons */}
-      <div className="mb-4">
+      <div className="view-toggle">
         <button
-          className={`px-4 py-2 mr-2 rounded ${
-            view === "table" ? "bg-blue-500 text-white" : "bg-gray-200"
-          }`}
+          className={`toggle-button ${view === "table" ? "active" : ""}`}
           onClick={() => setView("table")}
         >
           Table View
         </button>
         <button
-          className={`px-4 py-2 rounded ${
-            view === "calendar" ? "bg-blue-500 text-white" : "bg-gray-200"
-          }`}
+          className={`toggle-button ${view === "calendar" ? "active" : ""}`}
           onClick={() => setView("calendar")}
         >
           Calendar View
+        </button>
+      </div>
+      {/* Navigation Button */}
+      <div className="add-timesheet-container">
+        <button
+          onClick={() => navigate("/timesheets/new")}
+          className="add-timesheet-button"
+        >
+          Add New Timesheet
         </button>
       </div>
 

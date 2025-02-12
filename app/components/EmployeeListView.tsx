@@ -15,6 +15,11 @@ export default function EmployeeListView({ employees }: { employees: any[] }) {
 
   return (
     <div className="employee-list-container">
+      <div className="add-employee-container">
+        <button onClick={() => navigate("/employees/new")} className="button">
+          Add New Employee
+        </button>
+      </div>
       <h2 className="list-title">Employees List</h2>
 
       <div className="employee-list">
@@ -59,11 +64,6 @@ export default function EmployeeListView({ employees }: { employees: any[] }) {
           className="pagination-button"
         >
           Next
-        </button>
-      </div>
-      <div className="add-employee-container">
-        <button onClick={() => navigate("/employees/new")} className="button">
-          Add New Employee
         </button>
       </div>
     </div>

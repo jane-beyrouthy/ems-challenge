@@ -23,15 +23,13 @@ export default function TimesheetForm({
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-semibold mb-4">
-        {method === "post" ? "Create New Timesheet" : "Edit Timesheet"}
-      </h2>
-
-      <Form method={method}>
+    <div className="form-container">
+      <Form method={method} className="timesheet-form">
         {/* Employee Dropdown */}
-        <div className="mb-4">
-          <label htmlFor="employee_id">Employee</label>
+        <div className="form-group">
+          <label htmlFor="employee_id">
+            Employee <span className="required">*</span>
+          </label>
           <select
             name="employee_id"
             value={formData.employee_id}
@@ -48,8 +46,10 @@ export default function TimesheetForm({
         </div>
 
         {/* Start Time */}
-        <div className="mb-4">
-          <label htmlFor="start_time">Start Time</label>
+        <div className="form-group">
+          <label htmlFor="start_time">
+            Start Time <span className="required">*</span>
+          </label>
           <input
             type="datetime-local"
             name="start_time"
@@ -60,8 +60,10 @@ export default function TimesheetForm({
         </div>
 
         {/* End Time */}
-        <div className="mb-4">
-          <label htmlFor="end_time">End Time</label>
+        <div className="form-group">
+          <label htmlFor="end_time">
+            End Time <span className="required">*</span>
+          </label>
           <input
             type="datetime-local"
             name="end_time"
@@ -72,31 +74,12 @@ export default function TimesheetForm({
         </div>
 
         {/* Submit Button */}
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded"
-        >
-          {method === "post" ? "Create Timesheet" : "Update Timesheet"}
-        </button>
+        <div className="button-container">
+          <button type="submit" className="submit-button">
+            {method === "post" ? "Create Timesheet" : "Update Timesheet"}
+          </button>
+        </div>
       </Form>
-
-      {/* Navigation Buttons */}
-      <div className="mt-4">
-        {timesheet?.employee_id && (
-          <a
-            href={`/employees/${timesheet.employee_id}`}
-            className="mr-4 text-blue-600 underline"
-          >
-            View Employee
-          </a>
-        )}
-        <a href="/employees" className="mr-4 text-blue-600 underline">
-          Employee List
-        </a>
-        <a href="/timesheets" className="text-blue-600 underline">
-          Timesheets List
-        </a>
-      </div>
     </div>
   );
 }
