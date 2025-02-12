@@ -18,8 +18,17 @@ DROP TABLE IF EXISTS timesheets;
 -- Create employees table
 CREATE TABLE employees (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    full_name TEXT NULL
-    -- Rest of the fields
+    full_name TEXT NOT NULL,
+    email TEXT NOT NULL CHECK(email LIKE '%@%'),
+    phone TEXT NOT NULL CHECK(phone GLOB '+[0-9]*'), 
+    dob DATE NOT NULL,
+    job_title TEXT NOT NULL,
+    department TEXT NOT NULL,
+    salary REAL NOT NULL CHECK(salary >= 500), -- Assuming 500 as a minimum wage
+    start_date DATE NOT NULL,
+    end_date DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Create timesheets table
