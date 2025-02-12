@@ -1,44 +1,40 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 export default function EmployeeListView({ employees }: { employees: any[] }) {
-  return (
-    <div className="p-4">
-      <h2 className="text-xl font-semibold mb-4">Employees List</h2>
-      <button className="bg-blue-500 text-white px-4 py-2 rounded mb-4">
-        <Link to="/employees/new">Add New Employee</Link>
-      </button>
+  const navigate = useNavigate();
+  const handleEmployeeClick = (employeeId: string) => {
+    navigate(`/employees/${employeeId}`);
+  };
 
-      <table className="w-full border-collapse border border-gray-300">
-        <thead>
-          <tr className="bg-gray-200">
-            <th className="border p-2">Full Name</th>
-            <th className="border p-2">Email</th>
-            <th className="border p-2">Phone</th>
-            <th className="border p-2">Job Title</th>
-            <th className="border p-2">Department</th>
-            <th className="border p-2">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {employees.map((employee) => (
-            <tr key={employee.id} className="text-center border">
-              <td className="border p-2">{employee.full_name}</td>
-              <td className="border p-2">{employee.email}</td>
-              <td className="border p-2">{employee.phone}</td>
-              <td className="border p-2">{employee.job_title}</td>
-              <td className="border p-2">{employee.department}</td>
-              <td className="border p-2">
-                <Link
-                  to={`/employees/${employee.id}`}
-                  className="text-blue-600 underline"
-                >
-                  Edit
-                </Link>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+  return (
+    <div className="employee-list-container">
+      <h2 className="list-title">Employees List</h2>
+
+      <div className="add-employee-container">
+        <Link to="/employees/new" className="add-employee-button">
+          Add New Employee
+        </Link>
+      </div>
+
+      <div className="employee-list">
+        {employees.map((employee) => (
+          <div
+            key={employee.id}
+            className="employee-card"
+            onClick={() => handleEmployeeClick(employee.id)}
+          >
+            <h3 className="employee-name">{employee.full_name}</h3>
+            <p className="employee-role">
+              {employee.job_title} - {employee.department}
+            </p>
+            <p className="employee-email">{employee.email}</p>
+            <p className="employee-phone">{employee.phone}</p>
+            <Link to={`/employees/${employee.id}`} className="edit-button">
+              Edit
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
