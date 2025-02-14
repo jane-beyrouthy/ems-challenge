@@ -18,24 +18,26 @@ export async function loader() {
 export default function TimesheetsPage() {
   const navigate = useNavigate();
   const { timesheets } = useLoaderData() as { timesheets: any[] };
-  const [view, setView] = useState<"table" | "calendar">("table");
+  const [isCalendarView, setIsCalendarView] = useState(false);
 
   return (
     <div className="timesheets-page">
-      {/* Toggle Buttons */}
-      <div className="view-toggle">
-        <button
-          className={`toggle-button ${view === "table" ? "active" : ""}`}
-          onClick={() => setView("table")}
-        >
+      {/* Toggle Switch */}
+      <div className="toggle-switch-container">
+        <span className={!isCalendarView ? "active-label" : ""}>
           Table View
-        </button>
-        <button
-          className={`toggle-button ${view === "calendar" ? "active" : ""}`}
-          onClick={() => setView("calendar")}
-        >
+        </span>
+        <label className="toggle-switch">
+          <input
+            type="checkbox"
+            checked={isCalendarView}
+            onChange={() => setIsCalendarView(!isCalendarView)}
+          />
+          <span className="slider"></span>
+        </label>
+        <span className={isCalendarView ? "active-label" : ""}>
           Calendar View
-        </button>
+        </span>
       </div>
       {/* Navigation Button */}
       <div className="add-timesheet-container">
@@ -48,10 +50,10 @@ export default function TimesheetsPage() {
       </div>
 
       {/* Conditional Rendering */}
-      {view === "table" ? (
-        <TimesheetTableView timesheets={timesheets} />
-      ) : (
+      {isCalendarView ? (
         <TimesheetCalendarView timesheets={timesheets} />
+      ) : (
+        <TimesheetTableView timesheets={timesheets} />
       )}
     </div>
   );

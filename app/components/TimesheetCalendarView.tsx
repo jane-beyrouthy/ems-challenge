@@ -8,7 +8,7 @@ import {
 } from "@schedule-x/calendar";
 import { createEventsServicePlugin } from "@schedule-x/events-service";
 
-//import "@schedule-x/theme-default/dist/index.css"; // Import default theme
+import "@schedule-x/theme-default/dist/index.css"; // Import default theme
 
 // Function to format datetime to "YYYY-MM-DD HH:mm"
 const formatDateTime = (dateString: string) => {
